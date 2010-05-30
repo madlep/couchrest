@@ -18,7 +18,7 @@ class Time
     # utc time with wrong TZ info: 
     time = mktime($1, RFC2822_MONTH_NAME[$2.to_i - 1], $3, $4, $5, $6, $7)
     tz_difference = ("#{$7 == '-' ? '+' : '-'}#{$8}".to_i * 3600)
-    time + tz_difference + zone_offset(time.zone) 
+    time + tz_difference + time.utc_offset
   end 
 end
 
